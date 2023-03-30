@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nio.csd</groupId>
+    <artifactId>csd-project-template</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>csd-project-template-web</module>
+        <module>csd-project-template-application</module>
+        <module>csd-project-template-domain</module>
+        <module>csd-project-template-infrastructure</module>
+        <module>csd-project-template-common</module>
+        <module>csd-project-template-starter</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>csd-project-template</name>
+    <description>The uniform template for csd server application</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.2</version>
+    </parent>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <rocketmq-starter.version>1.0.0.RELEASE</rocketmq-starter.version>
+        <guava.version>31.1-jre</guava.version>
+    </properties>
+
+    <!-- 主要依赖包均已包含，可根据实际项目使用情况选择 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- 本地包 -->
+            <dependency>
+                <groupId>com.nio.csd</groupId>
+                <artifactId>csd-project-template-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nio.csd</groupId>
+                <artifactId>csd-project-template-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nio.csd</groupId>
+                <artifactId>csd-project-template-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nio.csd</groupId>
+                <artifactId>csd-project-template-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nio.csd</groupId>
+                <artifactId>csd-project-template-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 二方包 -->
+
+            <!-- 三方包 -->
+            <!-- springboot包含的三方包，不需要在此处显式声明引入，在用到的子module引入即可，不要写版本号，避免造成冲突 -->
+            <!-- springboot不包含的三方包，需要在此处声明，并指定版本号。注意各版本兼容性 -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-web</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- spring-cloud -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>${spring-cloud.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+
+            <!-- feign client -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- redis -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- kafka -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.kafka</groupId>-->
+<!--                <artifactId>spring-kafka</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- rocketMQ -->
+<!--            <dependency>-->
+<!--                <groupId>org.rocketmq.spring.boot</groupId>-->
+<!--                <artifactId>rocketmq-spring-boot-starter</artifactId>-->
+<!--                <version>${rocketmq-starter.version}</version>-->
+<!--            </dependency>-->
+
+            <!-- spring开发工具 -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-devtools</artifactId>-->
+<!--                <scope>runtime</scope>-->
+<!--                <optional>true</optional>-->
+<!--            </dependency>-->
+
+            <!-- prometheus -->
+<!--            <dependency>-->
+<!--                <groupId>io.micrometer</groupId>-->
+<!--                <artifactId>micrometer-registry-prometheus</artifactId>-->
+<!--                <scope>runtime</scope>-->
+<!--            </dependency>-->
+
+            <!-- mariadb client -->
+<!--            <dependency>-->
+<!--                <groupId>org.mariadb.jdbc</groupId>-->
+<!--                <artifactId>mariadb-java-client</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- lombok -->
+<!--            <dependency>-->
+<!--                <groupId>org.projectlombok</groupId>-->
+<!--                <artifactId>lombok</artifactId>-->
+<!--            </dependency>-->
+
+            <!-- test -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-test</artifactId>-->
+<!--                <scope>test</scope>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.kafka</groupId>-->
+<!--                <artifactId>spring-kafka-test</artifactId>-->
+<!--                <scope>test</scope>-->
+<!--            </dependency>-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
